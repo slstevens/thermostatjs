@@ -1,0 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+body {
+	background-color: yellow;
+}
+
+h1 {
+	font-family: 'Arvo', serif;
+	text-shadow: 5px 5px #C7C7C7;
+	text-align: center;
+	/*color: #F6E100 ;*/
+	font-size: 25em;
+	font-weight: bold;
+	letter-spacing: -4px;
+	line-height: 1.25em;
+	margin: 70px auto 40px;
+	opacity: 0.2;
+}
+
+h2 {
+	font-family: Helvetica Neue, Arial, sans-serif;
+	text-align: center;
+	font-size: 1em;
+	line-height: 2em;
+
+}
+
+div {
+
+}
+
+div#controls {
+	width: 15em;
+	border: 1px solid;
+	border-color: #888A8F;
+	top: 10px;
+	left: 10px;
+}
+
+h2#increase {
+	color: red;
+}
+
+h2#increase:hover, #decrease:hover, #reset:hover { 
+    background-color: gray;
+}
+
+h2#decrease {
+	color: blue;
+}
+
+form {
+}
+
+input {
+	font-family: Helvetica Neue, Arial, sans-serif;
+	font-size: 1em;
+	font-weight: 200;
+	text-align: center;
+	width: 99%;
+	border: none;
+	height: 2em;
+}
+

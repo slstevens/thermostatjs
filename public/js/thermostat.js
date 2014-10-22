@@ -29,5 +29,5 @@ Thermostat.prototype.decreaseTemperatureBy = function(degrees) {
 };
 
 Thermostat.prototype.reset = function() {
-	this.temperature = this.resetDefault = 20;
+	this.temperature = this.resetDefault;
 };
