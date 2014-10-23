@@ -5,13 +5,12 @@ function ThermostatView(element) {
 	this.bindTo('#increase', this.thermostat, this.thermostat.increaseTemperature);
 	this.bindTo('#decrease', this.thermostat, this.thermostat.decreaseTemperature);
 	this.bindTo('#reset', this.thermostat, this.thermostat.reset);
-
-
+	this.bindTo('#powersaveron', this.thermostat, this.thermostat.isPowerSaverOn = true);
 };
 
 ThermostatView.prototype.bindTo = function(selector, obj, func) {
 	$(selector).on('click', function() {
-		$('h1').text(func.call(obj));
+		$('h1').text(func.call(obj));	
 			if(parseInt($('h1').text()) > 25) {
   	 			$('body').css('background-color', 'red');
   	 			};
@@ -21,13 +20,26 @@ ThermostatView.prototype.bindTo = function(selector, obj, func) {
 			if(parseInt($('h1').text()) < 18) {
   				$('body').css('background-color', 'green');
   				};
+  			if(selector === '#reset') {
+				$('#message').text('The temperature has been reset!');
+  				};
 	});
 };
-
 
 $(document).ready(function() {
 
 	new ThermostatView('h1');
+
+	$.get("http://api.openweathermap.org/data/2.5/find?q=London&units=metric", function(data) { 
+		var currentLocation = (data['list'][1]['name']);
+		$('#location').text(currentLocation)
+	});
+
+	$.get("http://api.openweathermap.org/data/2.5/find?q=London&units=metric", function(data) { 
+		var currentWeather = (data['list'][1]['main']['temp']);
+		$('#currenttemp').text(currentWeather)
+	});
+
 			// $('h1').text(thermostat.temperature)
 
 			// $('#increase').on('click', function() {
