@@ -4,7 +4,7 @@
 	  	<title>Thermostat</title>
 	 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	  	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	  	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	  	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"> -->
 	</head>
 
 	<body> 
@@ -22,89 +22,12 @@
 		<h2 id="powersaveron">Power Saver On</h2>
 		<h2 id="powersaveroff">Power Saver Off</h2>
 	</div>
-	<h1>20</h1>
 	<h2 id="message"></h2>
+	<h1 id="temperature">TemperatureDisplay</h1>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jqueryui.js"></script>
 	<script type="text/javascript" src="js/thermostat.js"></script>
-	<script>
-		$(document).ready(function() {
-
-			var thermostat = new Thermostat;
-
-			// thermostat.isPowerSaverOn = false
-
-			$('#increase').on('click', function() {
-				thermostat.increaseTemperature();
-				$('h1').text(thermostat.temperature);
-   				if(thermostat.temperature > 25) {
-  				$('body').css('background-color', 'red');
-  				};
-				if(thermostat.temperature < 25) {
-  				$('body').css('background-color', 'yellow');
-  				};
-				if(thermostat.temperature < 18) {
-  				$('body').css('background-color', 'green');
-  				};
-			});
-
-			
-
-			$('#decrease').on('click', function() {
-				thermostat.decreaseTemperature();
-				$('h1').text(thermostat.temperature);
-   				if(thermostat.temperature > 25) {
-  				$('body').css('background-color', 'red');
-  				};
-				if(thermostat.temperature < 25) {
-  				$('body').css('background-color', 'yellow');
-  				};
-				if(thermostat.temperature < 18) {
-  				$('body').css('background-color', 'green');
-  				};
-			});
-
-
-			$('#reset').on('click', function() {
-				thermostat.reset();
-			});
-
-			$('#reset').on('click', function() {
-				thermostat.reset();
-				$('h1').text(thermostat.temperature);
-				$('#message').text('The temperature has been reset!');
-			});
-
-			$('#powersaveron').on('click', function() {
-				thermostat.isPowerSaverOn = true
-				$('#message').text('Power Saver is on!');
-			});
-
-			$('#powersaveroff').on('click', function() {
-				thermostat.isPowerSaverOn = false
-				$('#message').text('Power Saver is off!');
-			});
-
-
-	        $('#custom-values').on('submit', function(event) {
-	          event.preventDefault();
-				if ($('#mintemperature').val() !== "") {
-				$('#message').text("You've changed your minimum temperature to " + $('#mintemperature').val())
-	        	thermostat.minTemperature = parseInt($('#mintemperature').val())
-	        	}
-	        	else
-	        	$('#message').text("You need to enter a value")
-
-	        	// $('#message').text("You've changed your maximum temperature to " + $('#maxtemperature').val())
-	        	// thermostat.maxTemperature = parseInt($('#maxtemperature').val())
-
-	   //      	$('#message').text("You've changed your maximum Power Saver temperature to " + $('#maxtemperatureps').val())
-	   //      	thermostat.maxTemperature = parseInt($('#maxtemperatureps').val())
-	        });
-
-		});
-
-	</script>
+	<script type="text/javascript" src="js/interface.js"></script>
 
 	<script>
 		$(function() {

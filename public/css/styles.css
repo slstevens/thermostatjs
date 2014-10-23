@@ -14,8 +14,14 @@ h1 {
 	font-weight: bold;
 	letter-spacing: -4px;
 	line-height: 1.25em;
-	margin: 70px auto 40px;
+	/*margin: 50px auto;*/
+	left: 30%;	
+  	/*margin-left: -50px;	*/
 	opacity: 0.2;
+	position: absolute;
+	top: 0px;
+	/*width: 100%;*/
+
 }
 
 h2 {
@@ -30,12 +36,22 @@ div {
 
 }
 
+/*div#display {
+	display: inline;
+	position: absolute;
+    bottom: 15px;
+    text-align: center;
+    width: 100%;
+  	top: 20%;
+}*/
+
 div#controls {
 	width: 15em;
 	border: 1px solid;
 	border-color: #888A8F;
 	top: 10px;
 	left: 10px;
+	background-color: #FFFFFF;
 }
 
 h2#increase {
@@ -61,5 +77,15 @@ input {
 	width: 99%;
 	border: none;
 	height: 2em;
+}
+
+#messages {
+  border: 1px solid #000;
+  margin: 0.5em;
+}
+/* hiding the #messages element if it has
+   no content (including white-space): */
+#messages:empty {
+  display: none;
 }
 
