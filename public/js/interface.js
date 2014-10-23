@@ -2,27 +2,34 @@ function ThermostatView(element) {
 	this.el = $(element);
 	this.thermostat = new Thermostat;
 	this.el.text(this.thermostat.temperature);
-	this.bindTo('#increase', this.thermostat, this.thermostat.increaseTemperature);
-	this.bindTo('#decrease', this.thermostat, this.thermostat.decreaseTemperature);
-	this.bindTo('#reset', this.thermostat, this.thermostat.reset);
-	this.bindTo('#powersaveron', this.thermostat, this.thermostat.isPowerSaverOn = true);
+	this.bindTo('#increase', this.thermostat, this.thermostat.increaseTemperature, 'h1');
+	this.bindTo('#decrease', this.thermostat, this.thermostat.decreaseTemperature, 'h1');
+	this.bindTo('#reset', this.thermostat, this.thermostat.reset, 'h1');
+	this.bindTo('#powersaveron', this.thermostat, this.thermostat.isPowerSaverOn, '#message');
+	this.bindTo('#powersaveroff', this.thermostat, this.thermostat.isPowerSaverOff, '#message');
 };
 
-ThermostatView.prototype.bindTo = function(selector, obj, func) {
+ThermostatView.prototype.bindTo = function(selector, obj, func, target) {
 	$(selector).on('click', function() {
-		$('h1').text(func.call(obj));	
-			if(parseInt($('h1').text()) > 25) {
-  	 			$('body').css('background-color', 'red');
-  	 			};
-			if(parseInt($('h1').text()) < 25) {
-  				$('body').css('background-color', 'yellow');
-  				};
-			if(parseInt($('h1').text()) < 18) {
-  				$('body').css('background-color', 'green');
-  				};
-  			if(selector === '#reset') {
-				$('#message').text('The temperature has been reset!');
-  				};
+		$(target).text(func.call(obj));
+		if(parseInt($('h1').text()) > 25) {
+	 		$('body').css('background-color', 'red');
+	 	};
+		if(parseInt($('h1').text()) < 25) {
+			$('body').css('background-color', 'yellow');
+		};
+		if(parseInt($('h1').text()) < 18) {
+			$('body').css('background-color', 'green');
+		};
+		if(selector === '#reset') {
+			$('#message').text('The temperature has been reset!');
+		};
+		if(selector === '#powersaveron') {
+			$('#message').text('Power Saver is on!');
+		};
+		if(selector === '#powersaveroff') {
+			$('#message').text('Power Saver is off!');
+		};
 	});
 };
 
@@ -67,10 +74,6 @@ $(document).ready(function() {
 			// 	if(thermostat.temperature < 18) {
   	// 			$('body').css('background-color', 'green');
   	// 			};
-			// });
-
-			// $('#reset').on('click', function() {
-			// 	thermostat.reset();
 			// });
 
 			// $('#reset').on('click', function() {
